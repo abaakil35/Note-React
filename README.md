@@ -1,2 +1,2 @@
 # Note-React
-Note Platform by React Native 
+Notes Platform by React Js And AXIOS API Fpr Fetching Data 
