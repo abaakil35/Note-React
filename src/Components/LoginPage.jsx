@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const Login = ({ setisConect }) => {
+const LoginPage = ({ setisConect }) => {
   const [cin, setCin] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -9,7 +9,6 @@ const Login = ({ setisConect }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    
     if (!cin || !password) {
       setError("Please fill in both CIN and password.");
       return;
@@ -20,7 +19,13 @@ const Login = ({ setisConect }) => {
         cin,
         password,
       });
-      console.log(response.data);
+
+      const token = response.data.token;
+
+      localStorage.setItem("authToken", token);
+
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
       setisConect(true);
     } catch (err) {
       console.error(err);
@@ -54,10 +59,10 @@ const Login = ({ setisConect }) => {
         </div>
         <br />
         {error && <p style={{ color: "red" }}>{error}</p>}
-        <button type="submit">Login</button>
+        <button type="submit" >Login</button>
       </form>
     </div>
   );
 };
 
-export default Login;
+export default LoginPage;
