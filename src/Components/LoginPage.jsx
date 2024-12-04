@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import './Style.css'
 
 const LoginPage = ({ setisConect }) => {
   const [cin, setCin] = useState("");
@@ -33,33 +34,40 @@ const LoginPage = ({ setisConect }) => {
     }
   };
 
+
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="cin">CIN</label>
-          <br />
+    <div className="Login-page">
+      <form onSubmit={handleSubmit} className="form-container">
+        <h1 className="login">Welcome To Notes-App</h1>
+        <p className="breif">Please enter your CIN and password to login</p>
+        <div className="cin-form">
+          <label className="title-input" htmlFor="cin">CIN</label>
           <input
+            placeholder="Enter Your CIN !!"
+            className="input"
             type="text"
             id="cin"
             value={cin}
             onChange={(e) => setCin(e.target.value)}
           />
         </div>
-        <br />
-        <div>
-          <label htmlFor="password">Password</label>
-          <br />
+        
+        <div className="Passworn-form">
+          <label htmlFor="password" className="title-input">Password</label>
+          
           <input
+            placeholder="Enter Your Password !!"
+            className="input"
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <br />
+        
         {error && <p style={{ color: "red" }}>{error}</p>}
-        <button type="submit" >Login</button>
+        <button type="submit" className="Button" >Login</button>
+        <a className="lien" href="#">Forgot Your Password ?</a>
       </form>
     </div>
   );

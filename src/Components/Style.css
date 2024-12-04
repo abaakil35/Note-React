@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+* {
+    font-family: "Figtree", sans-serif;
+  }
+  
+  body {
+    user-select: none;
+    overflow-y: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: hsl(218deg 50% 91%);
+    height: 100vh;
+  }
+  
+  .Login-page {
+    background: hsl(213deg 85% 97%);
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    box-shadow: 0 0 2em hsl(231deg 62% 94%);
+    width: 444px;
+  }
+  
+  .Login-page .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+  }
+  
+  .Login-page .form-container .login {
+    font-size: 40px;
+    font-weight: bold;
+    color: hsl(233deg 36% 38%);
+    
+  }
+  
+  .Login-page .form-container .cin-form,
+  .Login-page .form-container .Passworn-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .Login-page .form-container .cin-form .title-input,
+  .Login-page .form-container .Passworn-form .title-input {
+    color: hsl(0deg 0% 30%);
+    font-weight: bold;
+    margin-bottom: 0.5em;
+  }
+  
+  .Login-page .form-container .cin-form .input,
+  .Login-page .form-container .Passworn-form .input {
+    padding: 1em;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 0 2em hsl(231deg 62% 94%);
+    font-size: 1em;
+    outline: none;
+  }
+  
+  .Login-page .form-container .cin-form .input::placeholder,
+  .Login-page .form-container .Passworn-form .input::placeholder {
+    color: hsl(0deg 0% 50%);
+  }
+  
+  .Login-page .form-container .Button {
+    padding: 1em 2em;
+    background: hsl(233deg 36% 38%);
+    color: hsl(0deg 0% 100%);
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .Login-page .form-container .Button:hover {
+    background: hsl(233deg 36% 45%);
+  }
+  
+  .Login-page p {
+    color:#766f6f;
+    font-size: 0.9em;
+  }
+  .lien{
+    text-decoration: none;
+    color: hsl(0, 1%, 30%);
+  }
+  .lien:hover{
+    color: hsl(0, 9%, 54%);
+  }
+  .breif p{
+    font-size: 1em;
+    font-weight: bold;
+    
+  }
+  h1{
+    margin-bottom: 0px;
+  }
