@@ -1,14 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, } from "react";
 import axios from "axios";
 import './Style.css'
+import Alert from '@mui/material/Alert';
+import CircularProgress from "@mui/material/CircularProgress";
 
 const LoginPage = ({ setisConect }) => {
   const [cin, setCin] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [loading, setLoading] = useState("idle");
+  
 
+
+  const handleClick = () => {
+    setShowAlert(true);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setShowError(true);
 
     if (!cin || !password) {
       setError("Please fill in both CIN and password.");
@@ -16,6 +27,7 @@ const LoginPage = ({ setisConect }) => {
     }
 
     try {
+      setLoading("pending");
       const response = await axios.post("https://notes.devlop.tech/api/login", {
         cin,
         password,
@@ -26,13 +38,15 @@ const LoginPage = ({ setisConect }) => {
       localStorage.setItem("authToken", token);
 
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
+      setLoading("fulfield")
       setisConect(true);
     } catch (err) {
       console.error(err);
+      setLoading("rejected")
       setError("Invalid CIN or password. Please try again.");
     }
   };
+ 
 
 
   return (
@@ -48,7 +62,8 @@ const LoginPage = ({ setisConect }) => {
             type="text"
             id="cin"
             value={cin}
-            onChange={(e) => setCin(e.target.value)}
+            onChange={(e) => {setShowError(false); setCin(e.target.value)}}
+            
           />
         </div>
         
@@ -61,13 +76,22 @@ const LoginPage = ({ setisConect }) => {
             type="password"
             id="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {setShowError(false); setPassword(e.target.value)}}
+            
           />
         </div>
-        
-        {error && <p style={{ color: "red" }}>{error}</p>}
+        {showError && loading == "rejected"  &&
+          <Alert severity="error" >{error}</Alert>
+        }
+        {loading == "pending" && <CircularProgress className="progress" />}
         <button type="submit" className="Button" >Login</button>
-        <a className="lien" href="#">Forgot Your Password ?</a>
+        <a className="lien" onClick={handleClick}>Forgot Your Password ?</a>
+        
+        {showAlert && (
+        <Alert severity="warning" onClose={() => setShowAlert(false)}>
+          Please Contact <strong>Mr.Taha Ferhani</strong>  for reset your password !
+        </Alert>
+      )}
       </form>
     </div>
   );
