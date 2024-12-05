@@ -32,9 +32,11 @@ const LoginPage = ({ setisConect }) => {
         cin,
         password,
       });
+      localStorage.setItem("first", response.data.user.first_name);
+      localStorage.setItem("last", response.data.user.last_name);
+      // console.log(response.data);
 
       const token = response.data.token;
-
       localStorage.setItem("authToken", token);
 
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;

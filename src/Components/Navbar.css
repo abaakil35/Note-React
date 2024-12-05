@@ -1,0 +1,81 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Figtree", sans-serif;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: hsl(213deg, 85%, 97%);
+    color: hsl(213deg, 25%, 35%);
+    padding: 15px 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 95%;
+    z-index: 1000;
+    box-sizing: border-box;
+    margin-left: 30px;
+    margin-right: 20px;
+    margin-top: 15px;
+  }
+  
+  .navbar-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .navbar-username {
+    font-size: 1.2rem;
+    font-weight: normal;
+  }
+  
+  .navbar-menu {
+    position: relative;
+  }
+  
+  .menu-button {
+    background: none;
+    border: none;
+    color: hsl(213deg, 25%, 35%);
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid hsl(213deg, 85%, 90%);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    min-width: 150px;
+    border-radius: 8px;
+    z-index: 1000;
+  }
+  
+  .dropdown-item {
+    padding: 10px;
+    text-decoration: none;
+    color: hsl(213deg, 25%, 35%);
+    display: block;
+    font-size: 1rem;
+  }
+  
+  .dropdown-item:hover {
+    background-color: hsl(213deg, 85%, 97%);
+    color: hsl(213deg, 25%, 25%);
+  }
+  
+  .navbar-menu:hover .dropdown {
+    display: flex;
+  }
+  

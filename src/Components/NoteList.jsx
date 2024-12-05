@@ -1,9 +1,11 @@
+// import axios from 'axios';
 
-
+import Navbar from './NavBar';
 const NotesList = () => {
 return(
     <div>
-        <h1>Hello</h1>
+    <Navbar />
+        
     </div>
 )
 
