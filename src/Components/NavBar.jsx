@@ -6,8 +6,7 @@ const Navbar = () => {
   const [userName, setUserName] = useState(" loading ...");
     const [userLast, setLast] = useState("");
     
-    useEffect(() => {
-      
+    useEffect(() => {   
       const storedName = localStorage.getItem("first");
       const storedlast = localStorage.getItem("last");
       if (storedName && storedlast) {
@@ -15,17 +14,26 @@ const Navbar = () => {
           setLast(storedlast);
       }
   }, []);
+
   return (
     <nav className="navbar">
       <div className="navbar-title">My Notes</div>
       <div className="navbar-username">
-        {userName} {userLast}
+      {userName && userLast ? (
+    <>
+      {userName.charAt(0).toUpperCase() + userName.slice(1).toLowerCase()}{" "}
+      {userLast.charAt(0).toUpperCase() + userLast.slice(1).toLowerCase()}
+    </>
+  ) : (
+    "Loading..."
+  )}
+
       </div>
       <div className="navbar-menu">
         <button className="menu-button">☰</button>
         <div className="dropdown">
-          <a href="#" className="dropdown-item">Change Password</a>
           <a href="#" className="dropdown-item">About Me</a>
+          <a href="#" className="dropdown-item">Change Password</a>
           <a href="#" className="dropdown-item">Logout</a>
         </div>
       </div>
