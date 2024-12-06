@@ -1,3 +1,20 @@
+
+# Notes App
+A feature-rich React application for managing notes, built with Axios for API requests and Material-UI for a sleek and responsive user interface.
+
+## Features
+- Add, view, edit, and delete notes seamlessly.
+- Interactive and responsive alerts for success and error messages.
+- Intuitive Material-UI components for a clean and polished design.
+- API integration using Axios for smooth communication with the backend.
+- Fully responsive, ensuring great usability on all devices.
+
+## Tech Stack
+- Frontend: React
+- API Requests: Axios
+- UI Components: Material-UI
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
