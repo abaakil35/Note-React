@@ -1,6 +1,6 @@
 import React, { useState, } from "react";
 import axios from "axios";
-import './Style.css'
+import './Style/Style.css'
 import Alert from '@mui/material/Alert';
 import CircularProgress from "@mui/material/CircularProgress";
 
@@ -54,8 +54,9 @@ const LoginPage = ({ setisConect }) => {
   return (
     <div className="Login-page">
       <form onSubmit={handleSubmit} className="form-container">
-        <h1 className="login">Welcome To Notes-App</h1>
-        <p className="breif">Please enter your CIN and password to login</p>
+        <h1 className="login">Welcome To Notes-App
+        </h1>
+        <p className="breif">Please enter your CIN and password to login </p>
         <div className="cin-form">
           <label className="title-input" htmlFor="cin">CIN</label>
           <input
