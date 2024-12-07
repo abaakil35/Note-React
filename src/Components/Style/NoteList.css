@@ -1,0 +1,32 @@
+
+
+.testNote {
+    color: #252f4f;
+    position: fixed;
+    top: 90px;
+    left: 55px;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 100%;
+}
+.testNote svg {
+    margin-right: 8px;
+    margin: 10px;
+}
+.CardsNotes {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+    flex-grow: 1;
+
+}
+.title{
+    display: flex;
+    color: #252f4f;
+}
+
