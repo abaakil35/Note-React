@@ -61,7 +61,9 @@ const Navbar = () => {
             </svg>Logout</a>
         </div>
       </div>
+     
     </nav>
+    
   );
 };
 

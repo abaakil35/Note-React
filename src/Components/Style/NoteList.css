@@ -11,10 +11,10 @@
     flex-direction: column;
     align-items: flex-start;
     min-height: 100%;
+    
 }
-.testNote svg {
+.testNote svg  :not(.SvgName){
     margin-right: 8px;
-    margin: 10px;
 }
 .CardsNotes {
     display: flex;
@@ -23,10 +23,18 @@
     padding: 20px;
     flex-wrap: wrap;
     flex-grow: 1;
+    overflow-y: auto;
+    min-height: 100%;
+    
 
 }
 .title{
     display: flex;
-    color: #252f4f;
+    
 }
-
+.SvgName{
+    margin: 10px;
+}
+.title h1{
+    color: #343c56;
+}

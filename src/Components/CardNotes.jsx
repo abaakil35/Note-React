@@ -29,7 +29,7 @@ const CardNotes = () => {
             </div>
 
             <div className="footnote">
-              <span className="footnote-text">You can use footnotes to add the app version.</span>
+              {/* <span className="footnote-text">You can use footnotes to add the app version.</span> */}
             </div>
           </section>
 

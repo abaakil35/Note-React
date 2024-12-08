@@ -38,21 +38,25 @@ body {
   background-position: center;
 }
 
-/* Simplified styles */
+
 .wrapper {
   position: relative;
   max-width: 400px;
   margin: auto;
   padding: 0;
   box-sizing: border-box;
+  transition: transform 0.3s ease;
 }
-
+.wrapper:hover {
+  transform: scale(1.05);
+  
+}
 .note {
-  max-width: 400px;
+  max-width: 350px;
   width: 100%;
   box-sizing: border-box;
   min-height: 252px;
-  border: 2px solid #005bda;
+  border: 1px solid #d2d6dc;
   border-radius: 12px;
   overflow: hidden;
   display: flex;
