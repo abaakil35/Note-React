@@ -28,13 +28,48 @@
     
 
 }
-.title{
+.title {
     display: flex;
     
 }
 .SvgName{
     margin: 10px;
 }
-.title h1{
+.title h1  {
     color: #343c56;
+    
+    
 }
+
+.button1 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 50px;
+    padding: 8px 11px;
+    background-color: #686897;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    border: none;
+}
+
+.button1 svg {
+    
+    transition: transform 0.2s ease;
+}
+
+.button1:hover {
+    background-color: #767f9f;
+    transform: scale(1.05);
+}
+
+.button1:hover svg {
+    transform: rotate(5deg);
+}
+
+
+
+

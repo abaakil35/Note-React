@@ -7,13 +7,6 @@ body {
 }
 
 
-.pos-abs {
-  position: absolute;
-}
-.fill-parent {
-  width: 100%;
-  height: 100%;
-}
 .bg-contain {
   background-size: contain;
 }
@@ -49,13 +42,14 @@ body {
 }
 .wrapper:hover {
   transform: scale(1.05);
-  
+
 }
+
 .note {
   max-width: 350px;
   width: 100%;
   box-sizing: border-box;
-  min-height: 252px;
+  
   border: 1px solid #d2d6dc;
   border-radius: 12px;
   overflow: hidden;
@@ -136,21 +130,27 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 20px;
   padding: 12px 20px;
-  background: #f6faff;
+  background: #cfd6ec;
+}
+.note-footer svg {
+  padding: 1px;
+  
+
 }
 
 .user-info {
   display: flex;
   align-items: center;
-  gap: 8px;
+  
+  
 }
 
 .user-avatar {
   width: 24px;
   height: 24px;
-  border-radius: 50%;
-  background: #fff;
+  margin-right: 3px;
 }
 
 .name-text {
@@ -160,7 +160,7 @@ body {
 }
 
 .timestamp {
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 400;
-  color: #000;
+  color: #2d2c2c;
 }

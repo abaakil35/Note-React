@@ -1,6 +1,18 @@
 import "./Style/CardNotes.css";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const CardNotes = () => {
+  const [notes, setNotes] = useState([]);
+  useEffect(() => {
+    axios.get("https://notes.devlop.tech/api/notes").then((response) => {
+        setNotes(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching notes:", error);
+      });
+  }, []);
+
   return (
     <div>
       <div className="wrapper">
@@ -24,25 +36,23 @@ const CardNotes = () => {
               </div>
 
               <div className="details">
-                <span className="details-text">Please provide a clear explanation of the items you want to report to ensure that both the project manager and developer can easily understand.</span>
+                <span className="details-text">Pl that both understand.</span>
               </div>
             </div>
 
             <div className="footnote">
-              {/* <span className="footnote-text">You can use footnotes to add the app version.</span> */}
+
             </div>
           </section>
 
           <section className="note-footer">
             <div className="user-info">
               <div className="user-avatar">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path opacity="0.5" d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" fill="#1C274C"/>
-                    <path d="M16.807 19.0112C15.4398 19.9504 13.7841 20.5 12 20.5C10.2159 20.5 8.56023 19.9503 7.193 19.0111C6.58915 18.5963 6.33109 17.8062 6.68219 17.1632C7.41001 15.8302 8.90973 15 12 15C15.0903 15 16.59 15.8303 17.3178 17.1632C17.6689 17.8062 17.4108 18.5964 16.807 19.0112Z" fill="#1C274C"/>
-                    <path d="M12 12C13.6569 12 15 10.6569 15 9C15 7.34315 13.6569 6 12 6C10.3432 6 9.00004 7.34315 9.00004 9C9.00004 10.6569 10.3432 12 12 12Z" fill="#1C274C"/>
-                    </svg></div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM15 9C15 10.6569 13.6569 12 12 12C10.3431 12 9 10.6569 9 9C9 7.34315 10.3431 6 12 6C13.6569 6 15 7.34315 15 9ZM12 20.5C13.784 20.5 15.4397 19.9504 16.8069 19.0112C17.4108 18.5964 17.6688 17.8062 17.3178 17.1632C16.59 15.8303 15.0902 15 11.9999 15C8.90969 15 7.40997 15.8302 6.68214 17.1632C6.33105 17.8062 6.5891 18.5963 7.19296 19.0111C8.56018 19.9503 10.2159 20.5 12 20.5Z" fill="#1C274C"/>
+              </svg></div>
               <div className="user-name">
-                <span className="name-text">Abaakil Ayoub</span>
+                <span className="name-text">Abaakil et 3+</span>
               </div>
             </div>
 
