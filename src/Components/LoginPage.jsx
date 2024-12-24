@@ -1,17 +1,16 @@
-import React, { useState, } from "react";
+import React, { useEffect, useState,  } from "react";
 import axios from "axios";
 import './Style/Style.css'
 import Alert from '@mui/material/Alert';
 import CircularProgress from "@mui/material/CircularProgress";
 
-const LoginPage = ({ setisConect }) => {
+const LoginPage = ({ setisConect  }) => {
   const [cin, setCin] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [showError, setShowError] = useState(false);
   const [loading, setLoading] = useState("idle");
-  
 
 
   const handleClick = () => {
@@ -34,7 +33,7 @@ const LoginPage = ({ setisConect }) => {
       });
       localStorage.setItem("first", response.data.user.first_name);
       localStorage.setItem("last", response.data.user.last_name);
-      // console.log(response.data);
+     
 
       const token = response.data.token;
       localStorage.setItem("authToken", token);
@@ -42,6 +41,7 @@ const LoginPage = ({ setisConect }) => {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       setLoading("fulfield")
       setisConect(true);
+   
     } catch (err) {
       console.error(err);
       setLoading("rejected")
@@ -49,7 +49,7 @@ const LoginPage = ({ setisConect }) => {
     }
   };
  
-
+ 
 
   return (
     <div className="Login-page">

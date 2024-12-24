@@ -4,23 +4,25 @@
   }
   
   body {
-    user-select: none;
     overflow-y: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: hsl(218deg 50% 91%);
-    height: 100vh;
+    background: #dde3f8;
+    max-height: 1280px;
   }
   
   .Login-page {
     background: hsl(213deg 85% 97%);
+    margin-top: 25px;
     padding: 2em;
     display: flex;
     flex-direction: column;
-    border-radius: 30px;
+    border-radius: 50px;
     box-shadow: 0 0 2em hsl(231deg 62% 94%);
     width: 444px;
+   
+
   }
   
   .Login-page .form-container {

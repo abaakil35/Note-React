@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree&display=swap');
+
+body {
+  font-family: 'Figtree', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f7f7f7;
+}
+
+.form-container {
+background: hsl(213deg 85% 97%);
+  border-radius: 10px;
+  box-shadow: 0 0 2em hsl(231deg 62% 94%);
+  padding: 30px 40px 60px 40px;
+  width: 130%;
+  max-width: 500px;
+  box-sizing: border-box;
+}
+
+h1.title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #343c56;
+}
+
+.labels {
+    color: #343c56;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: hsl(0deg 0% 30%);
+}
+
+textarea {
+  resize: none;
+  height: 90px;
+}
+
+button {
+  width: 48%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  background: hsl(233deg 36% 38%);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+
+}
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Figtree', sans-serif;
+}
+
+button[type="button"] {
+    font-family: 'Figtree', sans-serif;
+    background: hsl(233deg 36% 38%);
+}
+
+
+button:hover {
+  opacity: 0.9;
+}

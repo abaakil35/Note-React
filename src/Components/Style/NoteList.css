@@ -1,16 +1,16 @@
 
 
 .testNote {
-    color: #252f4f;
+    color: #dde3f8;
     position: fixed;
     top: 90px;
-    left: 55px;
+    left: 30px;
     margin: 0;
     padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    min-height: 100%;
+    max-height: 100%;
     
 }
 .testNote svg  :not(.SvgName){
@@ -19,13 +19,13 @@
 .CardsNotes {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    padding: 20px;
+    gap: 15px;
+    padding: 110px;
+    padding-top: 10px;
     flex-wrap: wrap;
-    flex-grow: 1;
-    overflow-y: auto;
-    min-height: 100%;
-    
+    max-height: 100vh;
+    overflow: auto;
+
 
 }
 .title {
@@ -46,7 +46,7 @@
     align-items: center;
     gap: 8px;
     margin-left: 50px;
-    padding: 8px 11px;
+    padding: 8px 10px;
     background-color: #686897;
     color: #ffffff;
     border: none;
