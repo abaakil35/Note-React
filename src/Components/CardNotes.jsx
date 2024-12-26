@@ -6,9 +6,13 @@ import Zoom from '@mui/material/Zoom';
 import  styled  from '@mui/material/styles/styled';
 import { tooltipClasses } from '@mui/material/Tooltip';
 import moment from "moment";
+import DetailsNote from "./DetailsNote";
+import { AnimatePresence, motion } from "framer-motion";
 
 const CardNotes = ({ note }) => {
   const [notes, setNotes] = useState([]);
+  const [isCardVisible, setIsCardVisible] = useState(false);
+
   useEffect(() => {
     axios.get("https://notes.devlop.tech/api/notes").then((response) => {
         setNotes(response.data);
@@ -18,6 +22,13 @@ const CardNotes = ({ note }) => {
       });
   }, []);
 
+  const handleDetailsClick = (e) => {
+    e.preventDefault();
+    setIsCardVisible(true);
+    }
+  const handleCancelClick = () => {
+    setIsCardVisible(false);
+  };
   
 //=========================================================================================
  
@@ -60,7 +71,7 @@ const CardNotes = ({ note }) => {
 
   return (
     <div>
-      <div className="wrapper">
+      <div className={`wrapper ${isCardVisible ? 'blur' : ''}`}>
         <div className="note">
           <section className="note-body">
             <div className="note-label">
@@ -75,7 +86,7 @@ const CardNotes = ({ note }) => {
               </div>
               <div className="label-test">
               <TooltipBlack slots={{transition: Zoom}} title="See The Details" placement="top"  arrow>
-                <a href="#" className="Details">
+                <a href="#" className="Details"  onClick={handleDetailsClick}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20 " height="18" viewBox="0 0 22 18" fill="none">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M11 5.25C8.92893 5.25 7.25 6.92893 7.25 9C7.25 11.0711 8.92893 12.75 11 12.75C13.0711 12.75 14.75 11.0711 14.75 9C14.75 6.92893 13.0711 5.25 11 5.25ZM8.75 9C8.75 7.75736 9.75736 6.75 11 6.75C12.2426 6.75 13.25 7.75736 13.25 9C13.25 10.2426 12.2426 11.25 11 11.25C9.75736 11.25 8.75 10.2426 8.75 9Z" fill="#1C274C"/>
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M11 0.25C6.48587 0.25 3.44529 2.9542 1.68057 5.24686L1.64874 5.2882C1.24964 5.80653 0.88206 6.28392 0.632687 6.8484C0.365645 7.45287 0.25 8.11169 0.25 9C0.25 9.88831 0.365645 10.5471 0.632687 11.1516C0.882062 11.7161 1.24964 12.1935 1.64875 12.7118L1.68057 12.7531C3.44529 15.0458 6.48587 17.75 11 17.75C15.5141 17.75 18.5547 15.0458 20.3194 12.7531L20.3512 12.7118C20.7504 12.1935 21.1179 11.7161 21.3673 11.1516C21.6344 10.5471 21.75 9.88831 21.75 9C21.75 8.11169 21.6344 7.45287 21.3673 6.8484C21.1179 6.28391 20.7504 5.80652 20.3512 5.28818L20.3194 5.24686C18.5547 2.9542 15.5141 0.25 11 0.25ZM2.86922 6.1618C4.49864 4.04492 7.15036 1.75 11 1.75C14.8496 1.75 17.5014 4.04492 19.1308 6.1618C19.5694 6.73159 19.8263 7.07206 19.9952 7.45455C20.1532 7.81202 20.25 8.24894 20.25 9C20.25 9.75107 20.1532 10.188 19.9952 10.5455C19.8263 10.9279 19.5694 11.2684 19.1308 11.8382C17.5014 13.9551 14.8496 16.25 11 16.25C7.15036 16.25 4.49864 13.9551 2.86922 11.8382C2.43064 11.2684 2.17374 10.9279 2.00476 10.5455C1.84684 10.188 1.75 9.75107 1.75 9C1.75 8.24894 1.84684 7.81202 2.00476 7.45455C2.17374 7.07206 2.43063 6.73159 2.86922 6.1618Z" fill="#1C274C"/>
@@ -110,10 +121,6 @@ const CardNotes = ({ note }) => {
                 <span className="details-text">{note.content}</span>
               </div>
             </div>
-
-            {/* <div className="footnote">
-
-            </div> */}
           </section>
 
           <section className="note-footer">
@@ -135,7 +142,27 @@ const CardNotes = ({ note }) => {
           </section>
         </div>
       </div>
+      <AnimatePresence>
+      {isCardVisible && 
+       <motion.div
+       initial={{ opacity: 0, y: -20 }}
+       animate={{ opacity: 1, y: 0 }}
+       exit={{ opacity: 0, y: -40 }}
+       transition={{ duration: 0.3 }}
+       className="blur-background"
+     >
+       <DetailsNote
+         title={note.title}
+         content={note.content}
+         sharedWith={note.shared_with}
+         onEdit={() => alert("Edit Note")}
+         onCancel={handleCancelClick}
+       />
+     </motion.div>}
+     </AnimatePresence>
+
     </div>
+    
   );
 };
 

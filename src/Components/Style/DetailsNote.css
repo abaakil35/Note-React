@@ -1,39 +1,71 @@
 .details-note {
-    border: 1px solid #ccc;
-    padding: 20px;
+    padding: 40px;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    background-color: #91a3d3;
+    align-items: center;
+    justify-content: center;
+    margin-top: 150px;
+    margin-left: 150px;
+    margin-right: 150px;
+   
+
+  }
+  .two{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 15px;
   }
   
+  .shared-with{
+    margin-right: 170px;
+    overflow: auto;
+    height: 170px;
+
+  }
+  .shared-with::-webkit-scrollbar {
+    display: none;
+  }
   .details-note h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-left: 350px;
+    align-items: center;
+    color: #1b191b96;
   }
   
   .details-note p {
     font-size: 16px;
     margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
   }
   
   .shared-with h3 {
     font-size: 18px;
     margin-bottom: 5px;
+    align-items: center;
+    justify-content: center;
   }
   
   .shared-with ul {
     list-style-type: none;
     padding: 0;
+    
   }
   
-  .shared-with li {
+  .shared-with p {
     font-size: 14px;
   }
   
   .buttons {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 15px;
   }
-  
+.cancel-button:hover{
+    background-color: #42454b;
+    transform: scale(1.02)
+}
   .edit-button, .cancel-button {
     padding: 10px 20px;
     font-size: 16px;
@@ -43,11 +75,15 @@
   }
   
   .edit-button {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #8aa78a;
+    color: rgb(253, 242, 242);
+  }
+  .edit-button:hover {
+    background-color: #6f9e6f;
+    transform: scale(1.02)
   }
   
   .cancel-button {
-    background-color: #f44336;
-    color: white;
+    background-color: #807f7f;
+    color: rgb(231, 230, 230);
   }
