@@ -1,7 +1,7 @@
 .details-note {
     padding: 40px;
     border-radius: 5px;
-    background-color: #91a3d3;
+    background-color: #767f9f;
     align-items: center;
     justify-content: center;
     margin-top: 150px;
@@ -17,7 +17,7 @@
   }
   
   .shared-with{
-    margin-right: 170px;
+    margin-right: 90px;
     overflow: auto;
     height: 170px;
 
@@ -30,7 +30,7 @@
     margin-top: 10px;
     margin-left: 350px;
     align-items: center;
-    color: #1b191b96;
+    color: #ffffff96;
   }
   
   .details-note p {
@@ -75,15 +75,15 @@
   }
   
   .edit-button {
-    background-color: #8aa78a;
+    background-color: #4b4e4bae;
     color: rgb(253, 242, 242);
   }
   .edit-button:hover {
-    background-color: #6f9e6f;
+    background-color: #414141;
     transform: scale(1.02)
   }
   
   .cancel-button {
-    background-color: #807f7f;
+    background-color: #706e6ec4;
     color: rgb(231, 230, 230);
   }
