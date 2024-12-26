@@ -45,6 +45,7 @@ body {
 
 }
 
+
 .note {
   max-width: 350px;
   width: 100%;
@@ -140,7 +141,7 @@ body {
   justify-content: space-between;
   margin-top: 20px;
   padding: 12px 20px;
-  background: #cfd6ec;
+  background: #d2d9f0;
 }
 .note-footer svg {
   padding: 1px;
@@ -172,3 +173,4 @@ body {
   font-weight: 400;
   color: #2d2c2c;
 }
+

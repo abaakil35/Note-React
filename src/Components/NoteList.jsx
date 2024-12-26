@@ -3,11 +3,12 @@ import "./Style/NoteList.css";
 import Navbar from './NavBar';
 import CardNotes from "./CardNotes";    
 import { useEffect, useState } from 'react';
-// import CreatNote from './CreateNote';
+import { motion } from 'framer-motion';
+
 
 const NotesList = () => {
     const [notes, setNotes] = useState([]);  
-
+    
     useEffect(() => {
         axios.get("https://notes.devlop.tech/api/notes")
           .then((response) => {
@@ -42,9 +43,21 @@ return(
                     </div>
                 </div>
             <div className="CardsNotes">
-                {notes.map((note) => (
-                    <CardNotes key={note.id} note={note} />
-                ))}
+                        {notes.map((note) => (
+            <motion.div
+                key={note.id}
+                initial={{ opacity: 0, y: -50 }} 
+                animate={{ opacity: 1, y: 0 }}    
+                exit={{ opacity: 0, y: 50 }}      
+                transition={{
+                type: 'spring',
+                stiffness: 100,
+                damping: 25,
+                }}
+            >
+                <CardNotes note={note} />
+            </motion.div>
+            ))}
             </div>
             
         </div>
