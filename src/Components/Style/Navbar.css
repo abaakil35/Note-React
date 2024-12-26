@@ -49,6 +49,7 @@ body, html {
   }
   
   .dropdown {
+    
     position: absolute;
     top: 100%;
     right: 0;
@@ -60,6 +61,10 @@ body, html {
     min-width: 200px;
     border-radius: 8px;
     z-index: 1000;
+  }
+  .dropdown a{
+    text-decoration: none;
+    color: hsl(213, 28%, 23%);
   }
   
   .dropdown-item {

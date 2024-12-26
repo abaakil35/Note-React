@@ -5,8 +5,9 @@ import Tooltip from '@mui/material/Tooltip';
 import Zoom from '@mui/material/Zoom';
 import  styled  from '@mui/material/styles/styled';
 import { tooltipClasses } from '@mui/material/Tooltip';
+import moment from "moment";
 
-const CardNotes = () => {
+const CardNotes = ({ note }) => {
   const [notes, setNotes] = useState([]);
   useEffect(() => {
     axios.get("https://notes.devlop.tech/api/notes").then((response) => {
@@ -17,7 +18,7 @@ const CardNotes = () => {
       });
   }, []);
 
-
+  
 //=========================================================================================
  
   //for the tolltip of the edit and delete buttons in black color
@@ -33,8 +34,29 @@ const CardNotes = () => {
       fontFamily: '"Figtree", serif',
       fontSize: "12px",
       color: "white",
+      // width: "200px"
     },
   }));
+
+ 
+
+  const formatDate = (timestamp) => {
+    return moment(timestamp).format("ddd, DD MMM YYYY");
+  };
+
+  const formatSharedWith = (sharedWith) => {
+    if (sharedWith.length === 1) {
+      const { first_name, last_name } = sharedWith[0];
+      return `${first_name.charAt(0).toUpperCase() + first_name.slice(1).toLowerCase()} ${last_name.charAt(0).toUpperCase() + last_name.slice(1).toLowerCase()}`;
+    } else if (sharedWith.length > 1) {
+      const { first_name: firstFirstName, last_name: firstLastName } = sharedWith[0];
+      const { first_name: lastFirstName, last_name: lastLastName } = sharedWith[sharedWith.length - 1];
+      return ` ${firstLastName.charAt(0).toUpperCase() + firstLastName.slice(1).toLowerCase()} And  +${sharedWith.length - 1}` ;
+    }
+    return '';
+  };
+
+  const tooltipText = note.shared_with.map(person => `${person.first_name.charAt(0).toUpperCase() + person.first_name.slice(1).toLowerCase()} ${person.last_name.charAt(0).toUpperCase() + person.last_name.slice(1).toLowerCase()}`).join(" & "); 
 
   return (
     <div>
@@ -81,17 +103,17 @@ const CardNotes = () => {
             </div>
             <div className="note-details">
               <div className="title">
-                <span className="title-text">Title for the important information</span>
+                <span className="title-text">{note.title}</span>
               </div>
 
               <div className="details">
-                <span className="details-text">Pl that both understand.</span>
+                <span className="details-text">{note.content}</span>
               </div>
             </div>
 
-            <div className="footnote">
+            {/* <div className="footnote">
 
-            </div>
+            </div> */}
           </section>
 
           <section className="note-footer">
@@ -101,14 +123,14 @@ const CardNotes = () => {
               <path fill-rule="evenodd" clip-rule="evenodd" d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM15 9C15 10.6569 13.6569 12 12 12C10.3431 12 9 10.6569 9 9C9 7.34315 10.3431 6 12 6C13.6569 6 15 7.34315 15 9ZM12 20.5C13.784 20.5 15.4397 19.9504 16.8069 19.0112C17.4108 18.5964 17.6688 17.8062 17.3178 17.1632C16.59 15.8303 15.0902 15 11.9999 15C8.90969 15 7.40997 15.8302 6.68214 17.1632C6.33105 17.8062 6.5891 18.5963 7.19296 19.0111C8.56018 19.9503 10.2159 20.5 12 20.5Z" fill="#1C274C"/>
               </svg></div>
               <div className="user-name">
-              <TooltipBlack slots={{transition: Zoom}} title="Abaakil Ayoub and +3" placement="top"  arrow>
-                <span className="name-text">Abaakil et 3+</span>
+              <TooltipBlack slots={{transition: Zoom}} title={tooltipText} placement="top"  arrow>
+                <span className="name-text">{formatSharedWith(note.shared_with)}</span>
               </TooltipBlack>
               </div>
             </div>
 
             <div className="timestamp">
-              <span className="timestamp-text">Sun, 28 Dec 2024</span>
+              <span className="timestamp-text">{formatDate(note.date)}</span>
             </div>
           </section>
         </div>
@@ -116,4 +138,5 @@ const CardNotes = () => {
     </div>
   );
 };
+
 export default CardNotes;
