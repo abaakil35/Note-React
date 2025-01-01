@@ -19,6 +19,11 @@ const NotesList = () => {
             console.error("Error fetching notes:", error);
           });
       }, []);
+       
+      const handleDeleteNote = (id) => {
+        setNotes((prevNotes) => prevNotes.filter(note => note.id !== id));
+      };
+
 return(
     <div className="test">
     <Navbar />
@@ -55,7 +60,7 @@ return(
                 damping: 25,
                 }}
             >
-                <CardNotes note={note} />
+                <CardNotes note={note} onDelete={handleDeleteNote} />
             </motion.div>
             ))}
             </div>
