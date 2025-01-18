@@ -12,7 +12,7 @@
     max-height: 1280px;
   }
   
-  .Login-page {
+  .login-page {
     background: hsl(213deg 85% 97%);
     margin-top: 25px;
     padding: 2em;
@@ -21,26 +21,23 @@
     border-radius: 50px;
     box-shadow: 0 0 2em hsl(231deg 62% 94%);
     width: 444px;
-   
-
   }
   
-  .Login-page .form-container {
+  .login-form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 18px;
   }
   
-  .Login-page .form-container .login {
+  .login-title {
     font-size: 40px;
     font-weight: bold;
     color: hsl(233deg 36% 38%);
-    
   }
   
-  .Login-page .form-container .cin-form,
-  .Login-page .form-container .Passworn-form {
+  .login-cin-form,
+  .login-password-form {
     display: flex;
     flex-direction: column;
     gap: 0.5em;
@@ -48,15 +45,13 @@
     max-width: 300px;
   }
   
-  .Login-page .form-container .cin-form .title-input,
-  .Login-page .form-container .Passworn-form .title-input {
+  .login-title-input {
     color: hsl(0deg 0% 30%);
     font-weight: bold;
     margin-bottom: 0.5em;
   }
   
-  .Login-page .form-container .cin-form .input,
-  .Login-page .form-container .Passworn-form .input {
+  .login-input {
     padding: 1em;
     border: none;
     border-radius: 20px;
@@ -65,12 +60,11 @@
     outline: none;
   }
   
-  .Login-page .form-container .cin-form .input::placeholder,
-  .Login-page .form-container .Passworn-form .input::placeholder {
+  .login-input::placeholder {
     color: hsl(0deg 0% 50%);
   }
   
-  .Login-page .form-container .Button {
+  .login-button {
     padding: 1em 2em;
     background: hsl(233deg 36% 38%);
     color: hsl(0deg 0% 100%);
@@ -81,27 +75,30 @@
     transition: background 0.3s ease;
   }
   
-  .Login-page .form-container .Button:hover {
+  .login-button:hover {
     background: hsl(233deg 36% 45%);
   }
   
-  .Login-page p {
+  .login-page p {
     color:#766f6f;
     font-size: 0.9em;
   }
-  .lien{
+  
+  .login-lien {
     text-decoration: none;
     color: hsl(0, 1%, 30%);
   }
-  .lien:hover{
+  
+  .login-lien:hover {
     color: hsl(0, 9%, 54%);
   }
-  .breif p{
+  
+  .login-breif p {
     font-size: 1em;
     font-weight: bold;
-    
   }
-  h1{
+  
+  h1 {
     margin-bottom: 5px;
     margin-top: 3px;
   }

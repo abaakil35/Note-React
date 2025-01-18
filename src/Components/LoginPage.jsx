@@ -1,10 +1,10 @@
-import React, { useEffect, useState,  } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import './Style/Style.css'
+import './Style/Style.css';
 import Alert from '@mui/material/Alert';
 import CircularProgress from "@mui/material/CircularProgress";
 
-const LoginPage = ({ setisConect  }) => {
+const LoginPage = ({ setisConect }) => {
   const [cin, setCin] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -12,10 +12,10 @@ const LoginPage = ({ setisConect  }) => {
   const [showError, setShowError] = useState(false);
   const [loading, setLoading] = useState("idle");
 
-
   const handleClick = () => {
     setShowAlert(true);
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setShowError(true);
@@ -33,68 +33,59 @@ const LoginPage = ({ setisConect  }) => {
       });
       localStorage.setItem("first", response.data.user.first_name);
       localStorage.setItem("last", response.data.user.last_name);
-     
 
       const token = response.data.token;
       localStorage.setItem("authToken", token);
 
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      setLoading("fulfield")
+      setLoading("fulfilled");
       setisConect(true);
-   
+
     } catch (err) {
       console.error(err);
-      setLoading("rejected")
+      setLoading("rejected");
       setError("Invalid CIN or password. Please try again.");
     }
   };
- 
- 
 
   return (
-    <div className="Login-page">
-      <form onSubmit={handleSubmit} className="form-container">
-        <h1 className="login">Welcome To Notes-App
-        </h1>
-        <p className="breif">Please enter your CIN and password to login </p>
-        <div className="cin-form">
-          <label className="title-input" htmlFor="cin">CIN</label>
+    <div className="login-page">
+      <form onSubmit={handleSubmit} className="login-form-container">
+        <h1 className="login-title">Welcome To Notes-App</h1>
+        <p className="login-breif">Please enter your CIN and password to login</p>
+        <div className="login-cin-form">
+          <label className="login-title-input" htmlFor="cin">CIN</label>
           <input
             placeholder="Enter Your CIN !!"
-            className="input"
+            className="login-input"
             type="text"
             id="cin"
             value={cin}
-            onChange={(e) => {setShowError(false); setCin(e.target.value)}}
-            
+            onChange={(e) => { setShowError(false); setCin(e.target.value); }}
           />
         </div>
-        
-        <div className="Passworn-form">
-          <label htmlFor="password" className="title-input">Password</label>
-          
+        <div className="login-password-form">
+          <label htmlFor="password" className="login-title-input">Password</label>
           <input
             placeholder="Enter Your Password !!"
-            className="input"
+            className="login-input"
             type="password"
             id="password"
             value={password}
-            onChange={(e) => {setShowError(false); setPassword(e.target.value)}}
-            
+            onChange={(e) => { setShowError(false); setPassword(e.target.value); }}
           />
         </div>
-        {showError && loading == "rejected"  &&
-          <Alert severity="error" >{error}</Alert>
+        {showError && loading === "rejected" &&
+          <Alert severity="error">{error}</Alert>
         }
-        {loading == "pending" && <CircularProgress className="progress" />}
-        <button type="submit" className="Button" >Login</button>
-        <a className="lien" onClick={handleClick}>Forgot Your Password ?</a>
-        
+        {loading === "pending" && <CircularProgress className="login-progress" />}
+        <button type="submit" className="login-button">Login</button>
+        <a className="login-lien" onClick={handleClick}>Forgot Your Password?</a>
         {showAlert && (
-        <Alert severity="warning" onClose={() => setShowAlert(false)}>
-          Please Contact <strong>Mr.Taha Ferhani</strong>  for reset your password !
-        </Alert>
-      )}
+          <Alert severity="warning" onClose={() => setShowAlert(false)}>
+            Please Contact <strong>Mr.Taha Ferhani</strong> for reset your password!
+          </Alert>
+        )}
       </form>
     </div>
   );

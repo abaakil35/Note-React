@@ -1,64 +1,98 @@
 import "./Style/CreateNote.css";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios';
 
-
-const CreatNote = ({ onCreate, onCancel }) => {
-  const [recipient, setRecipient] = useState('');
+const CreateNote = ({ onCreate, onCancel }) => {
+  const [recipient, setRecipient] = useState([]);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [users, setUsers] = useState([]);
- 
+
   useEffect(() => {
-    axios.get('https://notes.devlop.tech/api/users') 
-      .then(response => setUsers(response.data))
+    axios.get('https://notes.devlop.tech/api/users')
+      .then(response => {
+        setUsers(response.data);
+        console.log(response.data); // Debugging line to check the fetched data
+      })
       .catch(error => console.error('Error fetching users:', error));
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const newNote = { recipient, title, content, time: new Date().toLocaleString() };
-    onCreate(newNote);
-  
-    axios.post('https://notes.devlop.tech/api/users', newNote) 
+    console.log(newNote); // Debugging line to check the newNote object
+    
+    axios.post('https://notes.devlop.tech/api/notes', newNote)
       .then(response => {
         onCreate(response.data);
       })
       .catch(error => console.error('Error adding note:', error));
   };
+
+  const handleRecipientClick = (id) => {
+    setRecipient(prevRecipients => {
+      if (prevRecipients.includes(id)) {
+        return prevRecipients.filter(recipientId => recipientId !== id);
+      } else {
+        return [...prevRecipients, id];
+      }
+    });
+  };
+
   return (
-    <div className="form-container">
-      <h1 className="title-create-note">Create or Edit Note</h1>
+    <div className="create-note-form-container">
+      <h1 className="create-note-title">Create Note</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label className="labels" htmlFor="recipient">
+          <label className="create-note-labels" htmlFor="recipient">
             Send to:
           </label>
-          <select id="recipients" multiple value={recipient} onChange={(e) => setRecipient(Array.from(e.target.selectedOptions, option => option.value))} required>
+          <ul className="available-users">
             {users.map(user => (
-              <option key={user.id} value={user.name}>{user.name}</option>
+              <li
+                key={user.id}
+                onClick={() => handleRecipientClick(user.id)}
+                className={recipient.includes(user.id) ? 'selected' : ''}
+              >
+                {user.first_name} {user.last_name}
+              </li>
             ))}
-          </select>
+          </ul>
         </div>
         <div>
-          <label className="labels" htmlFor="title">
+          <label className="create-note-labels" htmlFor="title">
             Title:
           </label>
-          <input type="text" id="title" className="input1" placeholder="Title !!" value={title} onChange={(e) => setTitle(e.target.value)} required />
+          <input type="text" id="title" className="create-note-input" placeholder="Title !!" value={title} onChange={(e) => setTitle(e.target.value)} required />
         </div>
         <div>
-          <label className="labels" htmlFor="content">
+          <label className="create-note-labels" htmlFor="content">
             Content:
           </label>
-          <textarea id="content" className="input1" placeholder="Content !!" value={content} onChange={(e) => setContent(e.target.value)} required></textarea>
+          <textarea id="content" className="create-note-input" placeholder="Content !!" value={content} onChange={(e) => setContent(e.target.value)} required></textarea>
         </div>
-        <div className="buttons11">
-          <button type="submit" className="but1">Create Note</button>
-          <button type="button" className="but2" onClick={onCancel}>Cancel</button>
+        <div>
+          <label className="create-note-labels" htmlFor="selected-recipients">
+            Selected Recipients:
+          </label>
+          <ul id="selected-recipients" className="selected-recipients">
+            {recipient.map(id => {
+              const user = users.find(user => user.id === id);
+              return user ? (
+                <li key={id} onClick={() => handleRecipientClick(id)}>
+                  {user.first_name} {user.last_name}
+                </li>
+              ) : null;
+            })}
+          </ul>
+        </div>
+        <div className="create-note-button-container">
+          <button type="submit" className="create-note-button">Create Note</button>
+          <button type="button" className="create-note-button" onClick={onCancel}>Cancel</button>
         </div>
       </form>
     </div>
   );
 };
 
-export default CreatNote;
+export default CreateNote;

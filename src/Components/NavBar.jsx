@@ -105,7 +105,7 @@ const Navbar = () => {
       </div>
      </TooltipBlack>
 
-{/* Routes For Dropdown Menu  */}
+
   <Routes>
   <Route path="/updatepassword" element={<UpdatePassword />} />
   <Route path="/mynotesonly" element={<MyNotesOnly />} />

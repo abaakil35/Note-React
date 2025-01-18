@@ -3,12 +3,13 @@ import "./Style/NoteList.css";
 import Navbar from './NavBar';
 import CardNotes from "./CardNotes";    
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-// import CreatNote from './CreateNote';
+import { motion, AnimatePresence } from 'framer-motion';
+import CreateNote from './CreateNote'; 
 
 const NotesList = () => {
     const [notes, setNotes] = useState([]);  
-    
+    const [showCreateNote, setShowCreateNote] = useState(false);
+
     useEffect(() => {
         axios.get("https://notes.devlop.tech/api/notes")
           .then((response) => {
@@ -24,9 +25,18 @@ const NotesList = () => {
         setNotes((prevNotes) => prevNotes.filter(note => note.id !== id));
       };
 
+      const handleCreateNote = (newNote) => {
+        setNotes([...notes, newNote]);
+        setShowCreateNote(false);
+      };
+    
+      const handleCancel = () => {
+        setShowCreateNote(false);
+      };
+
 return(
     <div className="test">
-    <Navbar />
+    <Navbar className={showCreateNote ? "blurred" : ""} />
         <div className="testNote" 
                 style={{ backgroundColor: '#dde3f8', width: '100%' }}
             >
@@ -37,7 +47,7 @@ return(
                 <h1>All Notes  </h1>
                 <div className="didi">
                 
-                <button className="button1"  > 
+                <button className="button1" onClick={() => setShowCreateNote(true)}> 
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M18.18 8.03933L18.6435 7.57589C19.4113 6.80804 20.6563 6.80804 21.4241 7.57589C22.192 8.34374 22.192 9.58868 21.4241 10.3565L20.9607 10.82M18.18 8.03933C18.18 8.03933 18.238 9.02414 19.1069 9.89309C19.9759 10.762 20.9607 10.82 20.9607 10.82M18.18 8.03933L13.9194 12.2999C13.6308 12.5885 13.4865 12.7328 13.3624 12.8919C13.2161 13.0796 13.0906 13.2827 12.9882 13.4975C12.9014 13.6797 12.8368 13.8732 12.7078 14.2604L12.2946 15.5L12.1609 15.901M20.9607 10.82L16.7001 15.0806C16.4115 15.3692 16.2672 15.5135 16.1081 15.6376C15.9204 15.7839 15.7173 15.9094 15.5025 16.0118C15.3203 16.0986 15.1268 16.1632 14.7396 16.2922L13.5 16.7054L13.099 16.8391M13.099 16.8391L12.6979 16.9728C12.5074 17.0363 12.2973 16.9867 12.1553 16.8447C12.0133 16.7027 11.9637 16.4926 12.0272 16.3021L12.1609 15.901M13.099 16.8391L12.1609 15.901" stroke="White" stroke-width="1.5"/>
                     <path d="M8 13H10.5" stroke="White" stroke-width="1.5" stroke-linecap="round"/>
@@ -64,7 +74,25 @@ return(
             </motion.div>
             ))}
             </div>
-            
+            <AnimatePresence>
+                {showCreateNote && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="backdrop"
+                    >
+                        <motion.div
+                            initial={{ scale: 0.8 }}
+                            animate={{ scale: 1 }}
+                            exit={{ scale: 0.8 }}
+                            className="create-note-modal"
+                        >
+                            <CreateNote onCreate={handleCreateNote} onCancel={handleCancel} />
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     </div>
     

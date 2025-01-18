@@ -1,30 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Figtree&display=swap');
 
-
-.form-container {
-background: hsl(213deg 85% 97%);
+.create-note-form-container {
+  background: hsl(213deg 85% 97%);
   border-radius: 10px;
-  box-shadow: 0 0 2em hsl(231deg 62% 94%);
+  box-shadow: 0 0 2px ;
   padding: 30px 40px 60px 40px;
-  width: 130%;
+  width: 200%;
   max-width: 500px;
   box-sizing: border-box;
+  margin-right: 100px;
 }
 
-.title-create-note {
+.create-note-title {
   text-align: center;
   margin-bottom: 30px;
   color: #343c56;
 }
 
-.labels {
-    color: #343c56;
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
+.create-note-labels {
+  color: #343c56;
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
 }
 
-select {
+.create-note-select {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
@@ -34,7 +34,7 @@ select {
   color: hsl(0deg 0% 30%);
 }
 
-.input1{
+.create-note-input {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
@@ -43,7 +43,8 @@ select {
   box-sizing: border-box;
   color: hsl(0deg 0% 30%);
 }
-.input1 textarea {
+
+.create-note-input textarea {
   resize: none;
   height: 90px;
   width: 100%;
@@ -55,7 +56,7 @@ select {
   color: hsl(0deg 0% 30%);
 }
 
-.but1, .but2 {
+.create-note-button {
   width: 48%;
   padding: 10px;
   margin-top: 10px;
@@ -65,17 +66,44 @@ select {
   color: white;
   font-size: 16px;
   cursor: pointer;
-
-}
-.buttons11{
-    display: flex;
-    justify-content: space-between;
-    font-family: 'Figtree', sans-serif;
-    font-family: 'Figtree', sans-serif;
-    background: hsl(233deg 36% 38%);
 }
 
-.buttons11:hover {
+.create-note-button-container {
+  background: hsl(213deg 85% 97%);
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Figtree', sans-serif;
+  
+}
+
+.create-note-button-container:hover {
   opacity: 0.9;
 }
+.available-users, .selected-recipients {
+  list-style-type: none;
+  font-size: 13px;
+  padding: 0;
+  margin: 0;
+  border-radius: 4px;
+  max-height: 100px;
+  overflow-y: auto;
+}
 
+.available-users li, .selected-recipients li {
+  padding: 7px;
+  cursor: pointer;
+  color: #616982;
+}
+
+
+
+.available-users li:hover, .selected-recipients li:hover {
+  background-color: #91999aa9;
+}
+
+.available-users li.selected, .selected-recipients li.selected {
+  background-color: #d0e0f0;
+}
+
+.available-users::-webkit-scrollbar {
+  display: none;}
