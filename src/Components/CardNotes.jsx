@@ -12,7 +12,7 @@ import { AnimatePresence, motion } from "framer-motion";
 const CardNotes = ({ note, onDelete }) => {
   const [notes, setNotes] = useState([]);
   const [isCardVisible, setIsCardVisible] = useState(false);
-  
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
 
   useEffect(() => {
@@ -34,9 +34,7 @@ const CardNotes = ({ note, onDelete }) => {
     
   };
   
-  const handleAlertClose = () => {
-    
-  };
+  
 //=========================================================================================
  
   //for the tolltip of the edit and delete buttons in black color
@@ -67,7 +65,7 @@ const CardNotes = ({ note, onDelete }) => {
       });
   };
  
-
+  
   const formatDate = (timestamp) => {
     return moment(timestamp).format("ddd, DD MMM YYYY");
   };
@@ -159,6 +157,8 @@ const CardNotes = ({ note, onDelete }) => {
           </section>
         </div>
       </div>
+
+      
       <AnimatePresence>
       {isCardVisible && 
        <motion.div

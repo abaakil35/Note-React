@@ -4,7 +4,7 @@ import Navbar from './NavBar';
 import CardNotes from "./CardNotes";    
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-
+// import CreatNote from './CreateNote';
 
 const NotesList = () => {
     const [notes, setNotes] = useState([]);  
