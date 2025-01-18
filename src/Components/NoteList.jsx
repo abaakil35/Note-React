@@ -6,9 +6,11 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import CreateNote from './CreateNote'; 
 
+
 const NotesList = () => {
     const [notes, setNotes] = useState([]);  
     const [showCreateNote, setShowCreateNote] = useState(false);
+
 
     useEffect(() => {
         axios.get("https://notes.devlop.tech/api/notes")
@@ -36,7 +38,7 @@ const NotesList = () => {
 
 return(
     <div className="test">
-    <Navbar className={showCreateNote ? "blurred" : ""} />
+    <Navbar showCreateNote={showCreateNote} />
         <div className="testNote" 
                 style={{ backgroundColor: '#dde3f8', width: '100%' }}
             >

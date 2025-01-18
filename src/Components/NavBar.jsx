@@ -9,7 +9,7 @@ import AboutMe from "./AboutMe";
 import UpdatePassword from "./UpdatePassword";
 import { Route, Routes, Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({showCreateNote}) => {
   const [userName, setUserName] = useState(" loading ...");
     const [userLast, setLast] = useState("");
     
@@ -41,7 +41,7 @@ const Navbar = () => {
 
 
   return (
-    <nav className="navbar">
+    <nav className={showCreateNote ? "navbar-true" : "navbar-false"}>
       <div className="navbar-title">My Notes</div>
       <div className="navbar-username">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
