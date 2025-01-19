@@ -49,15 +49,19 @@ const CreateNote = ({ onCreate, onCancel }) => {
             Send to:
           </label>
           <ul className="available-users">
-            {users.map(user => (
-              <li
-                key={user.id}
-                onClick={() => handleRecipientClick(user.id)}
-                className={recipient.includes(user.id) ? 'selected' : ''}
-              >
-                {user.first_name} {user.last_name}
-              </li>
-            ))}
+          {users.length > 0 ? (
+              users.map(user => (
+                <li
+                  key={user.id}
+                  onClick={() => handleRecipientClick(user.id)}
+                  className={recipient.includes(user.id) ? 'selected' : ''}
+                >
+                  {user.first_name} {user.last_name}
+                </li>
+              ))
+            ) : (
+              <li>Loading ..... </li>
+            )}
           </ul>
         </div>
         <div>

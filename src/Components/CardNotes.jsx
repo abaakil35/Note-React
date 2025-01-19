@@ -49,7 +49,10 @@ const CardNotes = ({ note, onDelete, onUpdate }) => {
   };
   
   const formatSharedWith = (sharedWith) => {
-    if (sharedWith.length === 1) {
+    if (sharedWith.length === 0) {
+      return "My Notes (Me)";
+      
+    } else if (sharedWith.length === 1) {
       const { first_name, last_name } = sharedWith[0];
       return `${first_name.charAt(0).toUpperCase() + first_name.slice(1).toLowerCase()} ${last_name.charAt(0).toUpperCase() + last_name.slice(1).toLowerCase()}`;
     } else if (sharedWith.length > 1) {
