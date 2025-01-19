@@ -9,6 +9,8 @@
   max-width: 500px;
   box-sizing: border-box;
   margin-right: 100px;
+  height: 100%;
+
 }
 
 .create-note-title {
@@ -95,7 +97,10 @@
   color: #616982;
 }
 
-
+.selected-recipients{
+  max-height: 70px;
+  overflow-y: auto;
+}
 
 .available-users li:hover, .selected-recipients li:hover {
   background-color: #91999aa9;

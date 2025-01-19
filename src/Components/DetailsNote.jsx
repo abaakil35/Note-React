@@ -38,4 +38,6 @@ const DetailsNote = ({ title, content, sharedWith, onEdit, onCancel, date }) => 
   );
 };
 
+
+
 export default DetailsNote;
