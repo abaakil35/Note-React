@@ -2,7 +2,7 @@ import React from 'react';
 import './Style/DetailsNote.css'; 
 import moment from "moment";
 
-const DetailsNote = ({ title, content, sharedWith, onEdit, onCancel, date }) => {
+const DetailsNote = ({ title, content, sharedWith, onCancel, date }) => {
     const formatDate = (timestamp) => {
         return moment(timestamp).format("ddd, DD MMM YYYY");
       };
@@ -31,7 +31,7 @@ const DetailsNote = ({ title, content, sharedWith, onEdit, onCancel, date }) => 
       </div>
       </div>
       <div className="buttons">
-        <button className="edit-button" onClick={onEdit}>Edit</button>
+        <button className="edit-button" >Edit</button>
         <button className="cancel-button" onClick={onCancel}>Cancel</button>
       </div>
     </div>

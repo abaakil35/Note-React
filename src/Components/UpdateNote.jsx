@@ -1,39 +1,56 @@
-// filepath: /c:/Users/Abaakil Ayoub/Documents/GitHub/Note-React/src/Components/UpdateNote.jsx
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import CreateNote from "./CreateNote";
 import "./Style/CreateNote.css";
+import { useState, useEffect } from "react";
+import axios from 'axios';
 
-const UpdateNote = ({ noteId, onUpdate }) => {
-  const [note, setNote] = useState({ title: "", content: "", recipient: [] });
+const UpdateNote = ({ onCancel, title: initialTitle, content: initialContent, sharedWith, id }) => {
+  const [title, setTitle] = useState(initialTitle);
+  const [content, setContent] = useState(initialContent);
 
   useEffect(() => {
-    // Fetch the note data to populate the form
-    axios.get(`https://notes.devlop.tech/api/notes/${noteId}`)
-      .then(response => {
-        setNote(response.data);
-      })
-      .catch(error => {
-        console.error("There was an error fetching the note data!", error);
-      });
-  }, [noteId]);
+    setTitle(initialTitle);
+    setContent(initialContent);
+  }, [initialTitle, initialContent]);
 
-  const handleSave = (noteData, isEditMode) => {
-    axios.put(`https://notes.devlop.tech/api/notes/${noteId}`, noteData)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const updatedNote = { title, content, sharedWith };
+    axios.put(`https://notes.devlop.tech/api/notes/${id}`, updatedNote)
       .then(response => {
-        onUpdate(response.data);
+        console.log('Note updated:', response.data);
+        onCancel(); // Assuming onCancel will refresh the notes list or close the form
       })
-      .catch(error => {
-        console.error("There was an error updating the note!", error);
-      });
+      .catch(error => console.error('Error updating note:', error));
   };
 
   return (
-    <CreateNote
-      users={note.shared_with} // Assuming users are part of the note data
-      noteToEdit={note}
-      onSave={handleSave}
-    />
+    <div className="create-note-form-container">
+      <h1 className="create-note-title">Update Note</h1>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label className="create-note-labels" htmlFor="title">
+            Title:
+          </label>
+          <input
+            type="text"
+            id="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="create-note-labels" htmlFor="content">
+            Content:
+          </label>
+          <textarea
+            id="content"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
+        </div>
+        <button type="submit">Save</button>
+        <button type="button" onClick={onCancel}>Cancel</button>
+      </form>
+    </div>
   );
 };
 

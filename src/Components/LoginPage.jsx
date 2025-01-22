@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import './Style/Style.css';
 import Alert from '@mui/material/Alert';
+import { Link, useNavigate } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
 
 const LoginPage = ({ setisConect }) => {
@@ -11,6 +12,8 @@ const LoginPage = ({ setisConect }) => {
   const [showAlert, setShowAlert] = useState(false);
   const [showError, setShowError] = useState(false);
   const [loading, setLoading] = useState("idle");
+
+  const navigate = useNavigate();
 
   const handleClick = () => {
     setShowAlert(true);
@@ -40,6 +43,7 @@ const LoginPage = ({ setisConect }) => {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       setLoading("fulfilled");
       setisConect(true);
+      navigate('/home');
 
     } catch (err) {
       console.error(err);
@@ -80,7 +84,7 @@ const LoginPage = ({ setisConect }) => {
         }
         {loading === "pending" && <CircularProgress className="login-progress" />}
         <button type="submit" className="login-button">Login</button>
-        <a className="login-lien" onClick={handleClick}>Forgot Your Password?</a>
+        <Link className="login-lien" onClick={handleClick}>Forgot Your Password?</Link>
         {showAlert && (
           <Alert severity="warning" onClose={() => setShowAlert(false)}>
             Please Contact <strong>Mr.Taha Ferhani</strong> for reset your password!

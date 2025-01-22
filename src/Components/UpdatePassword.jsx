@@ -1,40 +1,46 @@
 import { useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const User = () => {
   const [old, setold] = useState("");
   const [newp, setnewp] = useState("");
   const [conf, setconf] = useState("");
   const myToken = localStorage.getItem("authToken");
+  const navigate = useNavigate();
 
   const handlePassword = () => {
     if (window.confirm("Are you sure you want to change your password?")) {
       if (old && newp && conf && newp === conf) {
-        axios.put(
-          `https://notes.devlop.tech/api/update-password`,
-          {
-            current_password: old,
-            new_password: newp,
-            new_password_confirmation: conf,
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${myToken}`,
+        axios
+          .put(
+            `https://notes.devlop.tech/api/update-password`,
+            {
+              current_password: old,
+              new_password: newp,
+              new_password_confirmation: conf,
             },
-          }
-        ).then(
-          alert("Password Updated Successfully")
-        );
+            {
+              headers: {
+                Authorization: `Bearer ${myToken}`,
+              },
+            }
+          )
+          .then(() => {
+            alert("Password Updated Successfully");
+            navigate("/home");
+          });
       }
     }
   };
 
   return (
-    <motion.div className="user"
-    initial={{ opacity: 0,y: 100 }}
-    animate={{ opacity: 1,y: 0 }}
-    transition={{ duration: 0.5 }}
+    <motion.div
+      className="user"
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
     >
       <div className="up">
         <h1>Change Password</h1>
