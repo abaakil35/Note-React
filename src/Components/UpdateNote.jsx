@@ -17,7 +17,7 @@ const UpdateNote = ({ onCancel, title: initialTitle, content: initialContent, sh
     axios.put(`https://notes.devlop.tech/api/notes/${id}`, updatedNote)
       .then(response => {
         console.log('Note updated:', response.data);
-        onCancel(); // Assuming onCancel will refresh the notes list or close the form
+        onCancel(); 
       })
       .catch(error => console.error('Error updating note:', error));
   };

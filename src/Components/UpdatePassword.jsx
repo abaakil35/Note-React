@@ -2,6 +2,9 @@ import { useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import './Style/UpdatePassword.css'
+import Alert from '@mui/material/Alert';
+
 
 const User = () => {
   const [old, setold] = useState("");
@@ -11,7 +14,7 @@ const User = () => {
   const navigate = useNavigate();
 
   const handlePassword = () => {
-    if (window.confirm("Are you sure you want to change your password?")) {
+    if (old && newp && conf) {
       if (old && newp && conf && newp === conf) {
         axios
           .put(
@@ -28,37 +31,25 @@ const User = () => {
             }
           )
           .then(() => {
-            alert("Password Updated Successfully");
+            
             navigate("/home");
           });
       }
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  }
+
   return (
-    <motion.div
-      className="user"
-      initial={{ opacity: 0, y: 100 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="up">
-        <h1>Change Password</h1>
-      </div>
-      <div className="down">
-        <div>
-          <label>Old Password :</label>
-          <input
-            type="text"
-            className="change"
-            onChange={(e) => setold(e.target.value)}
-            placeholder="Old Password"
-          />
-        </div>
+    <div className="update-password-container">
+      <h1 className="update-password-title">Change Password</h1>
+      <form onClick={handleSubmit} className="update-password-form">
         <div>
           <label>New Password :</label>
           <input
-            type="text"
+            type="password"
             className="change"
             onChange={(e) => setnewp(e.target.value)}
             placeholder="New Password"
@@ -67,7 +58,7 @@ const User = () => {
         <div>
           <label>Confirm Password :</label>
           <input
-            type="text"
+            type="password"
             className="change"
             onChange={(e) => setconf(e.target.value)}
             placeholder="Confirm Password"
@@ -80,8 +71,12 @@ const User = () => {
         >
           Change Password
         </motion.button>
-      </div>
-    </motion.div>
+      </form>
+      <br />
+      <Alert severity="warning">
+                  If you Have Probleme Please Contact  <strong>Mr.Taha Ferhani</strong> for reset your password  !!!!!
+                </Alert>
+    </div>
   );
 };
 

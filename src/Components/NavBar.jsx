@@ -11,6 +11,7 @@ const Navbar = ({ showCreateNote, setisConect }) => {
   const [userName, setUserName] = useState(" loading ...");
   const [userLast, setLast] = useState("");
 
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -223,6 +224,7 @@ const Navbar = ({ showCreateNote, setisConect }) => {
           </div>
         </div>
       </TooltipBlack>
+     
     </nav>
   );
 };
