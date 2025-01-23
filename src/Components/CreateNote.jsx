@@ -20,11 +20,9 @@ const CreateNote = ({ onCreate, onCancel }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newNote = { shared_with: recipient, title, content, time: new Date().toLocaleString() };
-    console.log('Submitting new note:', newNote); // Debugging line to check the newNote object
     
     axios.post('https://notes.devlop.tech/api/notes', newNote)
       .then(response => {
-        console.log('Note created:', response.data); // Debugging line to check the response
         onCreate(response.data);
       })
       .catch(error => console.error('Error adding note:', error));

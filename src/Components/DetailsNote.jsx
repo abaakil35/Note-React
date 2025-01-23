@@ -31,7 +31,6 @@ const DetailsNote = ({ title, content, sharedWith, onCancel, date }) => {
       </div>
       </div>
       <div className="buttons">
-        <button className="edit-button" >Edit</button>
         <button className="cancel-button" onClick={onCancel}>Cancel</button>
       </div>
     </div>

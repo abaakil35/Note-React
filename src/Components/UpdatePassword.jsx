@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import './Style/UpdatePassword.css'
 import Alert from '@mui/material/Alert';
 
@@ -46,6 +46,15 @@ const User = () => {
     <div className="update-password-container">
       <h1 className="update-password-title">Change Password</h1>
       <form onClick={handleSubmit} className="update-password-form">
+      <div>
+          <label>Old Password :</label>
+          <input
+            type="text"
+            className="change"
+            onChange={(e) => setold(e.target.value)}
+            placeholder="Old Password"
+          />
+        </div>
         <div>
           <label>New Password :</label>
           <input
@@ -73,7 +82,9 @@ const User = () => {
         </motion.button>
       </form>
       <br />
-      <Alert severity="warning">
+                <Link className="link" to="/home">Return To Home</Link>
+                <br />
+      <Alert style={{marginTop: "10px"}} severity="warning">
                   If you Have Probleme Please Contact  <strong>Mr.Taha Ferhani</strong> for reset your password  !!!!!
                 </Alert>
     </div>

@@ -119,22 +119,12 @@ const NotesList = ({ setisConect, isConnect }) => {
         </div>
         <div className="CardsNotes">
           {notes.map((note) => (
-            <motion.div
-              key={note.id}
-              initial={{ opacity: 0, y: -50 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 50 }}
-              transition={{
-                type: "spring",
-                stiffness: 100,
-                damping: 25,
-              }}
-            >
-              <CardNotes note={note} onDelete={handleDeleteNote} />
-            </motion.div>
+            
+              <CardNotes note={note} id={note.id} onDelete={handleDeleteNote} />
+            
           ))}
         </div>
-        <AnimatePresence>
+       
           {showCreateNote && (
             <motion.div
               initial={{ opacity: 0 }}
@@ -155,7 +145,7 @@ const NotesList = ({ setisConect, isConnect }) => {
               </motion.div>
             </motion.div>
           )}
-        </AnimatePresence>
+        
       </div>
     </div>
   );
