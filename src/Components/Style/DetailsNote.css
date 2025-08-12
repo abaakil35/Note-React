@@ -25,12 +25,13 @@
   .shared-with::-webkit-scrollbar {
     display: none;
   }
+  
   .details-note h1 {
     font-size: 30px;
     margin-top: 10px;
     margin-left: 350px;
     align-items: center;
-    color: #ffffff96;
+    color: #ffffffc3;
   }
   
   .details-note p {

@@ -78,11 +78,11 @@ const Navbar = ({ showCreateNote, setisConect }) => {
             {userLast.charAt(0).toUpperCase() + userLast.slice(1).toLowerCase()}
           </>
         ) : (
-          "Loading..."
+          "Loading.d.."
         )}
         <TooltipBlack
           slots={{ transition: Zoom }}
-          title="Verified !"
+          title="Developer !"
           placement="right"
           arrow
         >
