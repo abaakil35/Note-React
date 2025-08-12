@@ -101,6 +101,9 @@
   max-height: 70px;
   overflow-y: auto;
 }
+.selected-recipients::-webkit-scrollbar{
+  display: none;
+}
 
 .available-users li:hover, .selected-recipients li:hover {
   background-color: #91999aa9;

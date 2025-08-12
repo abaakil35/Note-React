@@ -1,6 +1,6 @@
 
 # Notes App
-A feature-rich React application for managing notes, built with Axios for API requests and Material-UI for a sleek and responsive user interface.
+A feature-rich React application for managing notes ans sharing notes, built with Axios for API requests and Material-UI for a sleek and responsive user interface.
 
 ## Features
 - Add, view, edit, and delete notes seamlessly.
