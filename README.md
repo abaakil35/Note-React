@@ -13,6 +13,8 @@ A feature-rich React application for managing notes ans sharing notes, built wit
 - Frontend: React
 - API Requests: Axios
 - UI Components: Material-UI
+- Framer-Motion : Smooth Animation
+
 
 
 # Getting Started with Create React App
